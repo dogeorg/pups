@@ -1,0 +1,113 @@
+{
+  "manifestVersion": 1,
+  "meta": {
+    "name": "Libdogecoin SPV",
+    "version": "0.0.1",
+    "logoPath": "",
+    "shortDescription": "Run a libdogecoin SPV node on your dogebox",
+    "longDescription": "Libdogecoin SPV runs a minimal node on your dogebox",
+    "upstreamVersions": {
+      "Libdogecoin": "v0.1.4-dogebox-pre"
+    }
+  },
+  "config": {
+    "sections": null
+  },
+  "container": {
+    "build": {
+      "nixFile": "pup.nix",
+      "nixFileSha256": "8d5feedc76759ae1ce3dfb8f64be807c340630c4601c598a4f088102b320a826"
+    },
+    "services": [
+      {
+        "name": "spvnode",
+        "command": {
+          "exec": "/bin/run.sh",
+          "cwd": "",
+          "env": null
+        }
+      },
+      {
+        "name": "monitor",
+        "command": {
+          "exec": "/bin/monitor",
+          "cwd": "",
+          "env": null
+        }
+      },
+      {
+        "name": "logger",
+        "command": {
+          "exec": "/bin/logger",
+          "cwd": "",
+          "env": null
+        }
+      }
+    ],
+    "exposes": [
+      {
+        "name": "p2p-port",
+        "type": "tcp",
+        "port": 22556,
+        "interfaces": null,
+        "listenOnHost": true
+      },
+      {
+        "name": "rest-port",
+        "type": "http",
+        "port": 12345,
+        "interfaces": ["lib-rest"],
+        "listenOnHost": true
+      }
+    ],
+    "requiresInternet": true
+  },
+  "interfaces": [
+    {
+      "name": "lib-rest",
+      "version": "0.0.1",
+      "permissionGroups": [
+        {
+          "name": "REST",
+          "description": "Allows RESTful access to the Libdogecoin SPV node",
+          "severity": 2,
+          "routes": ["/*"],
+          "port": 12345
+        }
+      ]
+    }
+  ],
+  "dependencies": null,
+  "metrics": [
+    {
+      "name": "balance",
+      "label": "Wallet Balance",
+      "type": "string",
+      "history": 1
+    },
+    {
+      "name": "address_count",
+      "label": "Address Count",
+      "type": "int",
+      "history": 30
+    },
+    {
+      "name": "transaction_count",
+      "label": "Transaction Count",
+      "type": "int",
+      "history": 30
+    },
+    {
+      "name": "unspent_count",
+      "label": "Unspent UTXO Count",
+      "type": "int",
+      "history": 30
+    },
+    {
+      "name": "chaintip",
+      "label": "Chain Tip",
+      "type": "int",
+      "history": 30
+    }
+  ]
+}
