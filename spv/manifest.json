@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "meta": {
     "name": "Libdogecoin SPV",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "logoPath": "logo.png",
     "shortDescription": "Run a libdogecoin SPV node on your dogebox",
     "longDescription": "Libdogecoin SPV runs a minimal node on your dogebox",
@@ -16,7 +16,7 @@
   "container": {
     "build": {
       "nixFile": "pup.nix",
-      "nixFileSha256": "737d4364ead28d6300f203fccfee002681ee97b5a904474757e108aac46a7341"
+      "nixFileSha256": "d73dd6e22a3632c08bed200fad90525b92d9e5e0928e34d160b9e98c06692cb7"
     },
     "services": [
       {
@@ -98,14 +98,14 @@
       "history": 1
     },
     {
-      "name": "transaction_count",
-      "label": "Transaction Count",
+      "name": "utxos",
+      "label": "UTXOs",
       "type": "string",
       "history": 1
     },
     {
-      "name": "unspent_count",
-      "label": "UTXO Count",
+      "name": "transactions",
+      "label": "Transactions",
       "type": "string",
       "history": 1
     }
