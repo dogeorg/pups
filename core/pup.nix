@@ -3,8 +3,8 @@
 let
   storageDirectory = "/storage";
   dogecoind_bin = pkgs.callPackage (pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/dogeorg/dogebox-nur-packages/3e186170de7f470b883675a7baec97edad42ad99/pkgs/dogecoin-core/default.nix";
-    sha256 = "sha256-XaN6D6vFNLgPHQVndF3YIhhCSWkpuUr7LMAdBKwCvu8=";
+    url = "https://raw.githubusercontent.com/dogeorg/dogebox-nur-packages/29193479f4c65ab0adf825e311695f9af9c1f260/pkgs/dogecoin-core/default.nix";
+    sha256 = "sha256-Ook3gvhiE7Bk2E7adF6wubBMjBMK7lr98SWHMemXE6Q=";
   }) {
     disableWallet = true;
     disableGUI = true;

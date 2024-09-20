@@ -2,31 +2,42 @@
   "manifestVersion": 1,
   "meta": {
     "name": "Dogecoin Core",
-    "version": "0.0.1",
+    "version": "0.0.2",
+    "logoPath": "",
+    "shortDescription": "",
     "longDescription": "Dogecoin Core runs a full core node on your dogebox"
+  },
+  "config": {
+    "sections": null
   },
   "container": {
     "build": {
       "nixFile": "pup.nix",
-      "nixFileSha256": "a306e31b106072ac23e7603284f1fc2b826d3d1191dba12968a61d2525ac35e8"
+      "nixFileSha256": "bfab662e1845e2a67d9ea206f25f83346463327fc690f39568028993779417b3"
     },
     "services": [
       {
         "name": "dogecoind",
         "command": {
-          "exec": "/bin/run.sh"
+          "exec": "/bin/run.sh",
+          "cwd": "",
+          "env": null
         }
       },
       {
         "name": "monitor",
         "command": {
-          "exec": "/bin/monitor"
+          "exec": "/bin/monitor",
+          "cwd": "",
+          "env": null
         }
       },
       {
         "name": "logger",
         "command": {
-          "exec": "/bin/logger"
+          "exec": "/bin/logger",
+          "cwd": "",
+          "env": null
         }
       }
     ],
@@ -35,19 +46,22 @@
         "name": "public-port",
         "type": "tcp",
         "port": 22556,
+        "interfaces": null,
         "listenOnHost": true
       },
       {
         "name": "rpc",
         "type": "http",
         "port": 22555,
-        "interfaces": ["core-rpc"]
+        "interfaces": ["core-rpc"],
+        "listenOnHost": false
       },
       {
         "name": "zmq",
         "type": "tcp",
         "port": 28332,
-        "interfaces": ["core-zmq"]
+        "interfaces": ["core-zmq"],
+        "listenOnHost": false
       }
     ],
     "requiresInternet": true
@@ -61,7 +75,8 @@
           "name": "RPC",
           "description": "Allows RPC access to the Dogecoin Core node",
           "severity": 2,
-          "routes": ["/*"]
+          "routes": ["/*"],
+          "port": 0
         }
       ]
     },
