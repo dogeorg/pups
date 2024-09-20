@@ -1,0 +1,127 @@
+{
+  "manifestVersion": 1,
+  "meta": {
+    "name": "Dogecoin Core",
+    "version": "0.0.1",
+    "longDescription": "Dogecoin Core runs a full core node on your dogebox"
+  },
+  "container": {
+    "build": {
+      "nixFile": "pup.nix",
+      "nixFileSha256": "a306e31b106072ac23e7603284f1fc2b826d3d1191dba12968a61d2525ac35e8"
+    },
+    "services": [
+      {
+        "name": "dogecoind",
+        "command": {
+          "exec": "/bin/run.sh"
+        }
+      },
+      {
+        "name": "monitor",
+        "command": {
+          "exec": "/bin/monitor"
+        }
+      },
+      {
+        "name": "logger",
+        "command": {
+          "exec": "/bin/logger"
+        }
+      }
+    ],
+    "exposes": [
+      {
+        "name": "public-port",
+        "type": "tcp",
+        "port": 22556,
+        "listenOnHost": true
+      },
+      {
+        "name": "rpc",
+        "type": "http",
+        "port": 22555,
+        "interfaces": ["core-rpc"]
+      },
+      {
+        "name": "zmq",
+        "type": "tcp",
+        "port": 28332,
+        "interfaces": ["core-zmq"]
+      }
+    ],
+    "requiresInternet": true
+  },
+  "interfaces": [
+    {
+      "name": "core-rpc",
+      "version": "0.0.1",
+      "permissionGroups": [
+        {
+          "name": "RPC",
+          "description": "Allows RPC access to the Dogecoin Core node",
+          "severity": 2,
+          "routes": ["/*"]
+        }
+      ]
+    },
+    {
+      "name": "core-zmq",
+      "version": "0.0.1",
+      "permissionGroups": [
+        {
+          "name": "ZMQ",
+          "description": "Allows ZMQ access to the Dogecoin Core node",
+          "severity": 1,
+          "routes": null,
+          "port": 28332
+        }
+      ]
+    }
+  ],
+  "dependencies": null,
+  "metrics": [
+    {
+      "name": "chain",
+      "label": "Name of the chain",
+      "type": "string",
+      "history": 1
+    },
+    {
+      "name": "blocks",
+      "label": "Block height",
+      "type": "int",
+      "history": 30
+    },
+    {
+      "name": "headers",
+      "label": "Headers",
+      "type": "int",
+      "history": 30
+    },
+    {
+      "name": "difficulty",
+      "label": "Difficulty",
+      "type": "float",
+      "history": 30
+    },
+    {
+      "name": "verification_progress",
+      "label": "Verification progress",
+      "type": "float",
+      "history": 30
+    },
+    {
+      "name": "initial_block_download",
+      "label": "Initial block download",
+      "type": "string",
+      "history": 1
+    },
+    {
+      "name": "size_on_disk",
+      "label": "Size on disk in MB",
+      "type": "int",
+      "history": 30
+    }
+  ]
+}

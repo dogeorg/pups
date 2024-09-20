@@ -1,0 +1,10 @@
+{
+  "id": "dogeorg.pups",
+  "name": "Dogecoin Foundation",
+  "description": "DogeOrg maintained pups for Dogebox",
+  "pups": [
+    {
+      "location": "core"
+    }
+  ]
+}
