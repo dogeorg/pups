@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "meta": {
     "name": "Dogecoin Core",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "logoPath": "",
     "shortDescription": "",
     "longDescription": "Dogecoin Core runs a full core node on your dogebox"
@@ -13,7 +13,7 @@
   "container": {
     "build": {
       "nixFile": "pup.nix",
-      "nixFileSha256": "bfab662e1845e2a67d9ea206f25f83346463327fc690f39568028993779417b3"
+      "nixFileSha256": "5588e722b7d7c8a2dfedeebbfbc3714e7f721607ddce8432e27aabd8dbd9fd7f"
     },
     "services": [
       {
@@ -53,14 +53,18 @@
         "name": "rpc",
         "type": "http",
         "port": 22555,
-        "interfaces": ["core-rpc"],
+        "interfaces": [
+          "core-rpc"
+        ],
         "listenOnHost": false
       },
       {
         "name": "zmq",
         "type": "tcp",
         "port": 28332,
-        "interfaces": ["core-zmq"],
+        "interfaces": [
+          "core-zmq"
+        ],
         "listenOnHost": false
       }
     ],
@@ -75,7 +79,9 @@
           "name": "RPC",
           "description": "Allows RPC access to the Dogecoin Core node",
           "severity": 2,
-          "routes": ["/*"],
+          "routes": [
+            "/*"
+          ],
           "port": 0
         }
       ]
