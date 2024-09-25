@@ -2,10 +2,13 @@
   "manifestVersion": 1,
   "meta": {
     "name": "Dogecoin Core",
-    "version": "0.0.3",
-    "logoPath": "",
-    "shortDescription": "",
-    "longDescription": "Dogecoin Core runs a full core node on your dogebox"
+    "version": "0.0.4",
+    "logoPath": "logo.png",
+    "shortDescription": "Run a full core node on your dogebox",
+    "longDescription": "This pup launches and configures a full Dogecoin Core node on your dogebox, allowing you to sync the blockchain and contribute to the network.",
+    "upstreamVersions": {
+      "Core": "v1.14.8"
+    }
   },
   "config": {
     "sections": null
@@ -13,7 +16,7 @@
   "container": {
     "build": {
       "nixFile": "pup.nix",
-      "nixFileSha256": "5588e722b7d7c8a2dfedeebbfbc3714e7f721607ddce8432e27aabd8dbd9fd7f"
+      "nixFileSha256": "aa786de8727a5a90a842caa84ef78bca2297befe15b0664883de067c01ced279"
     },
     "services": [
       {
@@ -53,18 +56,21 @@
         "name": "rpc",
         "type": "http",
         "port": 22555,
-        "interfaces": [
-          "core-rpc"
-        ],
+        "interfaces": ["core-rpc"],
+        "listenOnHost": false
+      },
+      {
+        "name": "rpc-tcp",
+        "type": "tcp",
+        "port": 22555,
+        "interfaces": ["core-rpc"],
         "listenOnHost": false
       },
       {
         "name": "zmq",
         "type": "tcp",
         "port": 28332,
-        "interfaces": [
-          "core-zmq"
-        ],
+        "interfaces": ["core-zmq"],
         "listenOnHost": false
       }
     ],
@@ -79,9 +85,7 @@
           "name": "RPC",
           "description": "Allows RPC access to the Dogecoin Core node",
           "severity": 2,
-          "routes": [
-            "/*"
-          ],
+          "routes": ["/*"],
           "port": 0
         }
       ]
@@ -104,13 +108,13 @@
   "metrics": [
     {
       "name": "chain",
-      "label": "Name of the chain",
+      "label": "Chain",
       "type": "string",
       "history": 1
     },
     {
       "name": "blocks",
-      "label": "Block height",
+      "label": "Block Height",
       "type": "int",
       "history": 30
     },
@@ -129,20 +133,20 @@
     {
       "name": "verification_progress",
       "label": "Verification progress",
-      "type": "float",
-      "history": 30
-    },
-    {
-      "name": "initial_block_download",
-      "label": "Initial block download",
       "type": "string",
       "history": 1
     },
     {
-      "name": "size_on_disk",
-      "label": "Size on disk in MB",
-      "type": "int",
-      "history": 30
+      "name": "initial_block_download",
+      "label": "Initial Download",
+      "type": "string",
+      "history": 1
+    },
+    {
+      "name": "chain_size_human",
+      "label": "Blockchain Size",
+      "type": "string",
+      "history": 1
     }
   ]
 }

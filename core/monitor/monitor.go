@@ -21,8 +21,8 @@ type BlockchainInfo struct {
 	Blocks               int     `json:"blocks"`
 	Headers              int     `json:"headers"`
 	Difficulty           float64 `json:"difficulty"`
-	VerificationProgress float64 `json:"verification_progress"`
-	InitialBlockDownload bool    `json:"initial_block_download"`
+	VerificationProgress float64 `json:"verificationprogress"`
+	InitialBlockDownload bool    `json:"initialblockdownload"`
 	SizeOnDisk           int64   `json:"size_on_disk"`
 }
 
@@ -78,14 +78,25 @@ func parseRawBlockchainInfo(rawInfo string) (BlockchainInfo, error) {
 
 func submitMetrics(info BlockchainInfo) {
 	client := &http.Client{}
+
+	// Verification progress is 0..-1, so we make it pretty text
+	verificationProgress := fmt.Sprintf("%.2f%%", info.VerificationProgress*100)
+	initialBlockDownload := "No"
+
+	if info.InitialBlockDownload {
+		initialBlockDownload = "Yes"
+	}
+
+	chainSize := bytesToHuman(info.SizeOnDisk)
+
 	jsonData := map[string]interface{}{
 		"chain":                  map[string]interface{}{"value": info.Chain},
 		"blocks":                 map[string]interface{}{"value": info.Blocks},
 		"headers":                map[string]interface{}{"value": info.Headers},
 		"difficulty":             map[string]interface{}{"value": info.Difficulty},
-		"verification_progress":  map[string]interface{}{"value": info.VerificationProgress},
-		"initial_block_download": map[string]interface{}{"value": fmt.Sprintf("%v", info.InitialBlockDownload)},
-		"size_on_disk":           map[string]interface{}{"value": info.SizeOnDisk},
+		"verification_progress":  map[string]interface{}{"value": verificationProgress},
+		"initial_block_download": map[string]interface{}{"value": initialBlockDownload},
+		"chain_size_human":       map[string]interface{}{"value": chainSize},
 	}
 
 	marshalledData, err := json.Marshal(jsonData)
@@ -93,6 +104,8 @@ func submitMetrics(info BlockchainInfo) {
 		log.Printf("Error marshalling blockchain info: %v", err)
 		return
 	}
+
+	log.Printf("Submitting metrics: %v", jsonData)
 
 	url := fmt.Sprintf("http://%s:%s/dbx/metrics", os.Getenv("DBX_HOST"), os.Getenv("DBX_PORT"))
 
@@ -119,6 +132,20 @@ func submitMetrics(info BlockchainInfo) {
 	}
 
 	log.Println("Metrics submitted successfully.")
+}
+func bytesToHuman(bytes int64) string {
+	const (
+		MB = 1024 * 1024
+		GB = 1024 * MB
+	)
+
+	if bytes < GB {
+		mb := float64(bytes) / MB
+		return fmt.Sprintf("%.2f MB", mb)
+	}
+
+	gb := float64(bytes) / GB
+	return fmt.Sprintf("%.2f GB", gb)
 }
 
 func main() {
