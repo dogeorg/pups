@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "meta": {
     "name": "Dogecoin Core",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "logoPath": "logo.png",
     "shortDescription": "Run a full core node on your dogebox",
     "longDescription": "This pup launches and configures a full Dogecoin Core node on your dogebox, allowing you to sync the blockchain and contribute to the network.",
