@@ -33,7 +33,7 @@ let
       -rpcpassword=$RPCPASS \
       -rpcbind=$DBX_PUP_IP \
       -rpcport=22555 \
-      -rpcallowip=10.69.0.0/16 \
+      -rpcallowip=0.0.0.0/0 \
       -zmqpubhashblock=tcp://0.0.0.0:28332
   '';
 
