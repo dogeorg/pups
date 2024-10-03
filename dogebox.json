@@ -5,6 +5,9 @@
   "pups": [
     {
       "location": "core"
+    },
+    {
+      "location": "gigawallet"
     }
   ]
 }

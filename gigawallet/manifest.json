@@ -1,0 +1,112 @@
+{
+  "manifestVersion": 1,
+  "meta": {
+    "name": "Gigawallet",
+    "version": "0.0.1",
+    "logoPath": "logo.png",
+    "shortDescription": "",
+    "longDescription": "Dogecoin GigaWallet is a backend service which provides a convenient integration API for platforms such as online shops, exchanges, social media platforms etc, to transact Dogecoin on behalf of their users.",
+    "upstreamVersions": {
+      "Gigawallet": "v1.0.1"
+    }
+  },
+  "config": {
+    "sections": null
+  },
+  "container": {
+    "build": {
+      "nixFile": "pup.nix",
+      "nixFileSha256": "06c424faabd296eb79a67a97d3d1811067999e552c119866b0dc1181479d6b75"
+    },
+    "services": [
+      {
+        "name": "gigawallet",
+        "command": {
+          "exec": "/bin/run.sh",
+          "cwd": "",
+          "env": null
+        }
+      }
+    ],
+    "exposes": [
+      {
+        "name": "public-port",
+        "type": "http",
+        "port": 8082,
+        "interfaces": [
+          "gigawallet-public"
+        ],
+        "listenOnHost": true,
+        "webUI": false
+      },
+      {
+        "name": "admin-port",
+        "type": "tcp",
+        "port": 8081,
+        "interfaces": [
+          "gigawallet-admin"
+        ],
+        "listenOnHost": false,
+        "webUI": false
+      }
+    ],
+    "requiresInternet": true
+  },
+  "interfaces": [
+    {
+      "name": "gigawallet-public",
+      "version": "0.0.1",
+      "permissionGroups": [
+        {
+          "name": "Public",
+          "description": "Allows public access to Gigawallet",
+          "severity": 1,
+          "routes": null,
+          "port": 8082
+        }
+      ]
+    },
+    {
+      "name": "gigawallet-admin",
+      "version": "0.0.1",
+      "permissionGroups": [
+        {
+          "name": "Admin",
+          "description": "Allows admin access to Gigawallet",
+          "severity": 3,
+          "routes": null,
+          "port": 8081
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "interfaceName": "core-rpc",
+      "interfaceVersion": "0.0.1",
+      "permissionGroups": [
+        "RPC"
+      ],
+      "source": {
+        "sourceLocation": "",
+        "pupName": "",
+        "pupVersion": "",
+        "pupLogoBase64": ""
+      }
+    },
+    {
+      "interfaceName": "core-zmq",
+      "interfaceVersion": "0.0.1",
+      "permissionGroups": [
+        "ZMQ"
+      ],
+      "source": {
+        "sourceLocation": "",
+        "pupName": "",
+        "pupVersion": "",
+        "pupLogoBase64": ""
+      }
+    }
+  ],
+  "metrics": null
+}
