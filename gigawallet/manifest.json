@@ -4,7 +4,7 @@
     "name": "Gigawallet",
     "version": "0.0.1",
     "logoPath": "logo.png",
-    "shortDescription": "",
+    "shortDescription": "A Dogecoin payment gateway for business apps",
     "longDescription": "Dogecoin GigaWallet is a backend service which provides a convenient integration API for platforms such as online shops, exchanges, social media platforms etc, to transact Dogecoin on behalf of their users.",
     "upstreamVersions": {
       "Gigawallet": "v1.0.1"
