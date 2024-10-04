@@ -8,6 +8,15 @@
     },
     {
       "location": "gigawallet"
+    },
+    {
+      "location": "dogenet"
+    },
+    {
+      "location": "dogemap"
+    },
+    {
+      "location": "identity"
     }
   ]
 }

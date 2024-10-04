@@ -1,0 +1,87 @@
+{
+  "manifestVersion": 1,
+  "meta": {
+    "name": "Dogenet",
+    "version": "0.0.1",
+    "logoPath": "logo.png",
+    "shortDescription": "Node to Node communication protocol",
+    "longDescription": "",
+    "upstreamVersions": null
+  },
+  "config": {
+    "sections": null
+  },
+  "container": {
+    "build": {
+      "nixFile": "pup.nix",
+      "nixFileSha256": "d2dae1243d04962bf51b5ec136d2c833357fe19491eef9e40916a7aed42ae140"
+    },
+    "services": [
+      {
+        "name": "dogenet",
+        "command": {
+          "exec": "/bin/run.sh",
+          "cwd": "",
+          "env": null
+        }
+      }
+    ],
+    "exposes": [
+      {
+        "name": "dogenet-gossip",
+        "type": "tcp",
+        "port": 42069,
+        "interfaces": null,
+        "listenOnHost": true,
+        "webUI": false
+      },
+      {
+        "name": "handler",
+        "type": "tcp",
+        "port": 42068,
+        "interfaces": ["dogenet-handler"],
+        "listenOnHost": false,
+        "webUI": false
+      },
+      {
+        "name": "web-api",
+        "type": "tcp",
+        "port": 8080,
+        "interfaces": ["dogenet-web-api"],
+        "listenOnHost": false,
+        "webUI": false
+      }
+    ],
+    "requiresInternet": true
+  },
+  "interfaces": [
+    {
+      "name": "dogenet-handler",
+      "version": "0.0.1",
+      "permissionGroups": [
+        {
+          "name": "Handler",
+          "description": "Allows a new Dogenet Handler to be registered",
+          "severity": 2,
+          "routes": null,
+          "port": 42068
+        }
+      ]
+    },
+    {
+      "name": "dogenet-web-api",
+      "version": "0.0.1",
+      "permissionGroups": [
+        {
+          "name": "Web API",
+          "description": "Allows access to Web API",
+          "severity": 1,
+          "routes": null,
+          "port": 8080
+        }
+      ]
+    }
+  ],
+  "dependencies": [],
+  "metrics": null
+}
