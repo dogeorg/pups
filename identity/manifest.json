@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "meta": {
     "name": "Identity",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "logoPath": "logo.png",
     "shortDescription": "Express your own identity on the network",
     "longDescription": "",
@@ -14,7 +14,7 @@
   "container": {
     "build": {
       "nixFile": "pup.nix",
-      "nixFileSha256": "1d6749e67102bf2148e5d204d7eaecb9ac68be72ac5392408974b9827582673e"
+      "nixFileSha256": "bf7907b057c1ae23702f804395e79612a86f8edf8b774091652f11eca998ae60"
     },
     "services": [
       {
@@ -43,7 +43,9 @@
     {
       "interfaceName": "dogenet-handler",
       "interfaceVersion": "0.0.1",
-      "permissionGroups": ["Handler"],
+      "permissionGroups": [
+        "Handler"
+      ],
       "source": {
         "sourceLocation": "",
         "pupName": "",
