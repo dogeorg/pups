@@ -17,6 +17,9 @@
     },
     {
       "location": "identity"
+    },
+    {
+      "location": "spv"
     }
   ]
 }
