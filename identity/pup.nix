@@ -2,13 +2,13 @@
 
 let
   identity_upstream = pkgs.callPackage (pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/dogeorg/dogebox-nur-packages/2840c907f07133f7f79fd83e2846d490d6236214/pkgs/identity/default.nix";
-    sha256 = "sha256-4Z+rVHOccoLZlgB5+YQKfKsTPAq5onALVE0BvvVhHLY=";
+    url = "https://raw.githubusercontent.com/dogeorg/dogebox-nur-packages/0fe8f2bb6d1fb842f51145d87adb04d89e81046a/pkgs/identity/default.nix";
+    sha256 = "sha256-Zum9hKYNeFGphT44eCo6m0f48rztUOBdNxiFJCFT1g4=";
   }) {};
 
   ui = pkgs.fetchgit {
     url = "https://github.com/dogeorg/identity-ui.git";
-    rev = "8853f04e4987ebb80a583a5cbd5cfa9ca34a71b5";
+    rev = "v0.0.1";
     hash = "sha256-dkUTCamwodnLaQnFw+9dLkOYlEiKTmUY2yH++CcQKww=";
   };
 

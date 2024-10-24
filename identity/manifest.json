@@ -14,7 +14,7 @@
   "container": {
     "build": {
       "nixFile": "pup.nix",
-      "nixFileSha256": "bf7907b057c1ae23702f804395e79612a86f8edf8b774091652f11eca998ae60"
+      "nixFileSha256": "af4086fc5f789cc27d721fe02dad208aa86dfba9aa25837711b862a2bc46455d"
     },
     "services": [
       {
@@ -34,11 +34,38 @@
         "interfaces": null,
         "listenOnHost": false,
         "webUI": true
+      },
+      {
+        "name": "web-api",
+        "type": "tcp",
+        "port": 8099,
+        "interfaces": [
+          "identity-web-api"
+        ],
+        "listenOnHost": false,
+        "webUI": false
       }
     ],
     "requiresInternet": false
   },
-  "interfaces": [],
+  "interfaces": [
+    {
+      "name": "identity-web-api",
+      "version": "0.0.1",
+      "permissionGroups": [
+        {
+          "name": "Web API",
+          "description": "Allows access to Web API",
+          "severity": 1,
+          "routes": [
+            "/locations",
+            "/chits"
+          ],
+          "port": 8099
+        }
+      ]
+    }
+  ],
   "dependencies": [
     {
       "interfaceName": "dogenet-handler",
