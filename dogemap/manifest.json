@@ -41,7 +41,33 @@
   "interfaces": [],
   "dependencies": [
     {
+      "interfaceName": "core-network",
+      "interfaceVersion": "0.0.1",
+      "permissionGroups": [
+        "Network"
+      ],
+      "source": {
+        "sourceLocation": "",
+        "pupName": "",
+        "pupVersion": "",
+        "pupLogoBase64": ""
+      }
+    },
+    {
       "interfaceName": "dogenet-web-api",
+      "interfaceVersion": "0.0.1",
+      "permissionGroups": [
+        "Web API"
+      ],
+      "source": {
+        "sourceLocation": "",
+        "pupName": "",
+        "pupVersion": "",
+        "pupLogoBase64": ""
+      }
+    },
+    {
+      "interfaceName": "identity-web-api",
       "interfaceVersion": "0.0.1",
       "permissionGroups": [
         "Web API"
