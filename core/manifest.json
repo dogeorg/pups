@@ -49,7 +49,9 @@
         "name": "public-port",
         "type": "tcp",
         "port": 22556,
-        "interfaces": null,
+        "interfaces": [
+          "core-network"
+        ],
         "listenOnHost": true
       },
       {
@@ -108,6 +110,19 @@
           "severity": 1,
           "routes": null,
           "port": 28332
+        }
+      ]
+    },
+    {
+      "name": "core-network",
+      "version": "0.0.1",
+      "permissionGroups": [
+        {
+          "name": "Network",
+          "description": "Allows access to the Dogecoin Core node's network port",
+          "severity": 2,
+          "routes": null,
+          "port": 22556
         }
       ]
     }
