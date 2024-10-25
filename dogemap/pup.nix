@@ -14,7 +14,7 @@ let
 
   dogemap = pkgs.writeScriptBin "run.sh" ''
     #!${pkgs.bash}/bin/bash
-    cp ${dogemap_upstream}/storage/dbip-city-ipv4-num.csv /storage
+    cp ${dogemap_upstream}/bin/storage/dbip-city-ipv4-num.csv /storage
     ${dogemap_upstream}/bin/dogemap --bind ''${DBX_PUP_IP}:8091 --dir /storage --web ${ui} --core ''${DBX_IFACE_CORE_NETWORK_HOST}:''${DBX_IFACE_CORE_NETWORK_PORT} --dogenet ''${DBX_IFACE_DOGENET_WEB_API_HOST}:''${DBX_IFACE_DOGENET_WEB_API_PORT} --identity ''${DBX_IFACE_IDENTITY_WEB_API_HOST}:''${DBX_IFACE_IDENTITY_WEB_API_PORT}
   '';
 in
