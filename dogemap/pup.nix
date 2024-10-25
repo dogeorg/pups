@@ -2,8 +2,8 @@
 
 let
   dogemap_upstream = pkgs.callPackage (pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/dogeorg/dogebox-nur-packages/2092edabf8a0a6d4094e9dd8d29dd695553ef5ec/pkgs/dogenet/default.nix";
-    sha256 = "sha256-7AvXs1EUt66qiddSuVzVMEn0JZWmcObhRtEIEKcdQyE=";
+    url = "https://raw.githubusercontent.com/dogeorg/dogebox-nur-packages/2092edabf8a0a6d4094e9dd8d29dd695553ef5ec/pkgs/dogemap/default.nix";
+    sha256 = "sha256-J1oj4tMYycpgxYoVzsZeR6qRQyMJEakiLdaC9qXQCMs=";
   }) {};
 
   ui = pkgs.fetchgit {
