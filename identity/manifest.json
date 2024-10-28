@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "meta": {
     "name": "Identity",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "logoPath": "logo.png",
     "shortDescription": "Express your own identity on the network",
     "longDescription": "",
