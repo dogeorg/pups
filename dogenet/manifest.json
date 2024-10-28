@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "meta": {
     "name": "Dogenet",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "logoPath": "logo.png",
     "shortDescription": "Node to Node communication protocol",
     "longDescription": "",
