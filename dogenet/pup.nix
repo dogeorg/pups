@@ -2,15 +2,13 @@
 
 let
   dogenet_upstream = pkgs.callPackage (pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/dogeorg/dogebox-nur-packages/0fe8f2bb6d1fb842f51145d87adb04d89e81046a/pkgs/dogenet/default.nix";
-    sha256 = "sha256-7AvXs1EUt66qiddSuVzVMEn0JZWmcObhRtEIEKcdQyE=";
+    url = "https://raw.githubusercontent.com/dogeorg/dogebox-nur-packages/c20d95a0695fdd0043e2e15d5f7967ed565e228d/pkgs/dogenet/default.nix";
+    sha256 = "sha256-hJ/74OtGf4EEj+JSTplgcSc1/jX4baxOI2QPeqOoaqI=";
   }) {};
 
   dogenet = pkgs.writeScriptBin "run.sh" ''
     #!${pkgs.bash}/bin/bash
-    export KEY=`cat /storage/delegated.key`
-    IP=`${pkgs.curl}/bin/curl https://reflector.dogecoin.org/me | ${pkgs.jq}/bin/jq -r .ip`
-    ${dogenet_upstream}/bin/dogenet --handler ''${DBX_PUP_IP}:42068 --web ''${DBX_PUP_IP}:8080 --public ''${IP}:42069 --dir /storage
+    KEY=`cat /storage/delegated.key` ${dogenet_upstream}/bin/dogenet --handler ''${DBX_PUP_IP}:42068 --web ''${DBX_PUP_IP}:8080 --dir /storage --reflector
   '';
 in
 {
