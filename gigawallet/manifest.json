@@ -37,7 +37,7 @@
           "gigawallet-public"
         ],
         "listenOnHost": true,
-        "webUI": false
+        "webUI": true
       },
       {
         "name": "admin-port",
@@ -46,8 +46,8 @@
         "interfaces": [
           "gigawallet-admin"
         ],
-        "listenOnHost": false,
-        "webUI": false
+        "listenOnHost": true,
+        "webUI": true
       }
     ],
     "requiresInternet": true
