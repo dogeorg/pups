@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "meta": {
     "name": "Dogenet",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "logoPath": "logo.png",
     "shortDescription": "Node to Node communication protocol",
     "longDescription": "",
@@ -14,7 +14,7 @@
   "container": {
     "build": {
       "nixFile": "pup.nix",
-      "nixFileSha256": "1d0e4f47a954a6ffbf21ed59bf59173fb7f309e22b6c3bf2521cccab95d1148b"
+      "nixFileSha256": "68f47d9343ec3b0a0c84015659f5e249de9dd81750a01dfa3688e55d015c5032"
     },
     "services": [
       {
