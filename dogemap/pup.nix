@@ -2,14 +2,14 @@
 
 let
   dogemap_upstream = pkgs.callPackage (pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/dogeorg/dogebox-nur-packages/2092edabf8a0a6d4094e9dd8d29dd695553ef5ec/pkgs/dogemap/default.nix";
-    sha256 = "sha256-J1oj4tMYycpgxYoVzsZeR6qRQyMJEakiLdaC9qXQCMs=";
+    url = "https://raw.githubusercontent.com/dogeorg/dogebox-nur-packages/66b656db989cd832ff60dd5b10cc58cd6e73436f/pkgs/dogemap/default.nix";
+    sha256 = "sha256-y00U9TQx7QguxTI2x5uzVqBM43dIK8cNaMrQXsVMIZs=";
   }) {};
 
   ui = pkgs.fetchgit {
     url = "https://github.com/dogeorg/dogemap-ui.git";
-    rev = "v0.0.6";
-    sha256 = "sha256-W1BU52P/6WM3zUhna1PWWb+of8KqZ3hY/cs9brJlmUQ=";
+    rev = "v0.0.8";
+    sha256 = "sha256-3qMLsjVD19ZAMTDo6eIkwn87vExw6V6/kQncRg4H4ek=";
   };
 
   dogemap = pkgs.writeScriptBin "run.sh" ''
