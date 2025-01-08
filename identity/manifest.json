@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "meta": {
     "name": "Identity",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "logoPath": "logo.png",
     "shortDescription": "Express your own identity on the network",
     "longDescription": "",
@@ -14,7 +14,7 @@
   "container": {
     "build": {
       "nixFile": "pup.nix",
-      "nixFileSha256": "af4086fc5f789cc27d721fe02dad208aa86dfba9aa25837711b862a2bc46455d"
+      "nixFileSha256": "5a7124d8ebd93e6d22df7a447afa7dba9a9fbb1786f62475352637c071e079e4"
     },
     "services": [
       {
