@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "meta": {
     "name": "Dogemap",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "logoPath": "logo.png",
     "shortDescription": "Find shibes \u0026 nodes around the globe",
     "longDescription": "",
@@ -14,7 +14,7 @@
   "container": {
     "build": {
       "nixFile": "pup.nix",
-      "nixFileSha256": "52de3eee88b7b9462eee30368301b36ce678f6c6288edf377c2d083a3a456dec"
+      "nixFileSha256": "55b89b10b342f3a36e3479d34fd272d35ff7f7fb6e26418a0c4df2664b8d996d"
     },
     "services": [
       {
