@@ -8,8 +8,8 @@ let
 
   ui = pkgs.fetchgit {
     url = "https://github.com/dogeorg/dogemap-ui.git";
-    rev = "v0.0.8";
-    sha256 = "sha256-3qMLsjVD19ZAMTDo6eIkwn87vExw6V6/kQncRg4H4ek=";
+    rev = "v0.0.9";
+    sha256 = "sha256-WnlBFmLXfZfO9ZDWvJoGFkLs/tuqqO93ggDYj2pPtsI=";
   };
 
   dogemap = pkgs.writeScriptBin "run.sh" ''
